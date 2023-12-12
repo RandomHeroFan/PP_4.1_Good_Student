@@ -1,0 +1,177 @@
+import java.text.*;
+
+class student{
+
+  // Instance variables
+
+  private String  name;
+  private String  nickname;
+  private int     Id;
+  private double  gpa;
+  private boolean CS;
+
+  // End of instance variables
+
+
+  // Constructors (The blueprint)
+
+  public student(String myName){ // 
+
+    name = myName;
+
+  }
+
+  public student(String myNickname, String myGpa){
+
+    nickname = myNickname;
+    gpa = 0;
+
+  }
+
+      // Zero arg constructor
+
+    public student(){
+
+      name     = "";
+      nickname = "";
+      Id       = 0;
+      gpa      = 0.0;
+      CS       = false;      
+    }
+
+      // End of zero arg constructor
+
+
+    public student(String Name, String Nickname, int Id, double Gpa, boolean CS){
+
+    this.name = Name;
+    this.nickname = Nickname;
+    this.gpa = Gpa;
+    this.Id = Id;
+    this.CS = CS;
+
+    }
+
+  // End of Blueprint
+
+
+
+  // toString  
+
+    public String toString(){
+
+    String result = "Student = "    + name + 
+                    "\nNickname = " + nickname +  
+                    "\nGPA = "      + gpa + 
+                    "\nID = "       + Id +
+                    "\nCS = "       + CS;
+
+    return result;
+
+    }
+
+  // end of toString
+
+
+
+  // Getters & Setters
+
+    // Setters
+
+  public void setNickname(String myNickname){
+
+  nickname = myNickname;  
+
+  }
+
+  public void setGpa(double myGpa){
+
+  gpa = myGpa;
+
+  }
+
+   // end of Setters
+
+   // Getters 
+
+
+  public String getNickname(){
+
+  return nickname;
+
+  }
+
+  public String getName(){
+
+  return name;
+
+  }
+
+  public String getFName(){ // First Name
+
+    int nameD = name.indexOf(" ") + 1;
+    return name.substring(0, nameD);
+  }
+
+  public String getLName(){ // Last Name
+
+    int nameD = name.indexOf(" ") + 1;
+  return name.substring(nameD, name.length());
+
+  }
+
+  public boolean getCS(){
+
+  return CS;
+
+  }
+
+public double getGpa(){
+
+return gpa;
+
+}
+
+  // End of Getters 
+
+
+  // End of Getters & Setters
+
+
+
+  // Brain Methods
+
+  public String createID(){
+
+    //Cut the ID
+    String IdS = "" + Id;
+    IdS = IdS.substring(3,6);
+
+    //Cut last name
+    int nameD = name.indexOf(" ") + 1;
+
+    return name.substring(0,1) + name.substring(nameD, name.length()) + IdS;
+
+  }
+
+  public double CSgpa(){
+
+    DecimalFormat myFormat = new DecimalFormat("#.##");
+
+    String ans;
+
+    if(CS == true)
+    ans = myFormat.format(gpa * 1.15);
+    else
+    ans = myFormat.format(gpa);
+
+    return Double.parseDouble(ans);
+
+    // End of Brain Methods
+
+  }  
+
+}
+
+
+
